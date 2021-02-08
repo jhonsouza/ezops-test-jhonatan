@@ -2,7 +2,7 @@
 
 #install dependecies 
 sudo yum install wget ruby git -y
-sudo dnf install nodejs
+sudo dnf install nodejs 
 sudo npm install -g forever
 
 #CodeDeploy agent
