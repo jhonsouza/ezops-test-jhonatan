@@ -2,6 +2,22 @@ version: 0.0
 os: linux
 
 files:
-  - source: ./
+  - source: /
     destination: /home/ec2-user/ezops-test-jhonatan
+
+hooks:
+  BeforeInstall:
+    - location: script/before_install.sh
+      timeout: 200
+      runas: ec2-user
+
+  AfterInstall:
+    - location: script/after_install.sh
+      timeout: 200
+      runas: ec2-user
+
+  ApplicationStart:
+    - location: script/application_start.sh
+      timeout: 200
+      runas: ec2-user
 

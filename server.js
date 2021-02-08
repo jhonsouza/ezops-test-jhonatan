@@ -14,6 +14,7 @@ var ec2 = require("ec2-publicip");
         var ipaws = ip;
         console.log(ipaws);
     });
+
 const uri = "mongodb+srv://jhonatan:tfdfsxzW7eHpjBbZ@cluster0.zftne.mongodb.net/ezops?retryWrites=true&w=majority";
 
 app.use(bodyParser.json());
