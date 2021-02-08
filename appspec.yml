@@ -2,5 +2,6 @@ version: 0.0
 os: linux
 
 files:
-  - source: /
+  - source: ./
     destination: /home/ec2-user/ezops-test-jhonatan
+

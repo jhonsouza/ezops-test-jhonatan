@@ -5,7 +5,15 @@ const cors = require('cors')
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const mongoose = require('mongoose');
-
+var ec2 = require("ec2-publicip");
+ 
+    ec2.getPublicIP(function (error, ip) {
+    	if (error) {
+    		console.log(error);
+    	}
+        var ipaws = ip;
+        console.log(ipaws);
+    });
 const uri = "mongodb+srv://jhonatan:tfdfsxzW7eHpjBbZ@cluster0.zftne.mongodb.net/ezops?retryWrites=true&w=majority";
 
 app.use(bodyParser.json());
@@ -21,8 +29,6 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true}, (err) 
     var connectionStatus = !err ? 'Success': 'Error Connecting to database';
 console.log(connectionStatus);
 });
-
-
 
 
 app.get('/messages', async (req, res) => {
