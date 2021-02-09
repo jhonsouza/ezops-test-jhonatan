@@ -14,6 +14,11 @@ permission:
       - directory
 
 hooks:
+  ApplicationStop:
+    - location: script/application_stop.sh
+      timeout: 200
+      runas: ec2-user
+      
   BeforeInstall:
     - location: script/before_install.sh
       timeout: 200
