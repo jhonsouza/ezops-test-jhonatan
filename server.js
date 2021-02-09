@@ -6,14 +6,15 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const mongoose = require('mongoose');
 var ec2 = require("ec2-publicip");
- 
-    ec2.getPublicIP(function (error, ip) {
-    	if (error) {
-    		console.log(error);
-    	}
-        var ipaws = ip;
-        console.log(ipaws);
-    });
+var ipaws;
+
+ec2.getPublicIP(function (error, ip) {
+  if (error) {
+    console.log(error);
+  }
+    var ipaws = ip;
+    console.log(ipaws);
+});
 
 const uri = "mongodb+srv://jhonatan:tfdfsxzW7eHpjBbZ@cluster0.zftne.mongodb.net/ezops?retryWrites=true&w=majority";
 
@@ -48,6 +49,7 @@ app.get('/messages/:user', (req, res) => {
   })
 })
 
+app.ipaws;
 
 app.post('/messages', async (req, res) => {
   const result = await Message.create(req.body)
