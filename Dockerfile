@@ -22,3 +22,5 @@ LABEL version="1.1"
 VOLUME [ "/var/node/ezops" ]
 
 EXPOSE 3000
+
+CMD [ "nodemon", "server.js" ]
