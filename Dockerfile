@@ -23,4 +23,4 @@ VOLUME [ "/var/node/ezops" ]
 
 EXPOSE 3000
 
-CMD [ "nodemon", "server.js" ]
+CMD [ "nodemon", "./server.js" ]
