@@ -18,10 +18,13 @@
     <br>
     <div class="jumbotron">
         <h1 class="display-4">Send Message</h1>
+        <h1></h1>
         <br>
         <input id = "name" class="form-control" placeholder="Name">
         <br>
         <textarea id = "message" class="form-control" placeholder="Your Message Here"></textarea>
+        <br>
+        <textarea id = "email" class="form-control" placeholder="You e-mail Here"></textarea>
         <br>
         <button id="send" class="btn btn-success">Send</button>
     </div>
@@ -31,9 +34,10 @@
 </div>
 <script>
    var socket = io();
+  
     $(() => {
         $("#send").click(()=>{
-            sendMessage({name: $("#name").val(), message: $("#message").val()});
+            sendMessage({name: $("#name").val(), message: $("#message").val(), email: $("#e-mail").val()});
         })
 
         getMessages()
@@ -41,7 +45,7 @@
     socket.on('message', addMessages)
 
     function addMessages(message){
-        $("#messages").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
+        $("#messages").append(`<h4> ${message.name} </h4> <p> ${message.message} </p> <p> ${message.email}</p>`)
     }
 
     function getMessages(){
