@@ -16,11 +16,3 @@ USER root
 
 LABEL description="simple app chat"
 LABEL version="1.1"
-
-
-
-VOLUME [ "/var/node/ezops" ]
-
-EXPOSE 3000
-
-CMD forever start ./server.js > init.log 2>&1 &

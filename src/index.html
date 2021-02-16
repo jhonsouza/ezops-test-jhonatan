@@ -53,13 +53,13 @@
    
 
     function getMessages(){
-      $.get('http://localhost:3000/messages', (data) => {
+      $.get('http://18.220.122.199:3000/messages', (data) => {
         data.forEach(addMessages);
       })
     }
     
     function sendMessage(message){
-      $.post('http://localhost:3000/messages', message)
+      $.post('http://18.220.122.199:3000/messages', message)
     }
     /*function addContact(contact){
         $("#messages").append(`<p> ${contact.email}</p> <p> ${contact.celular}</p>`)
