@@ -26,6 +26,8 @@
         <br>
         <textarea id = "email" class="form-control" placeholder="You e-mail Here"></textarea>
         <br>
+        <textarea id = "telefone" class="form-control" placeholder="You phone Here"></textarea>
+        <br>
         <button id="send" class="btn btn-success">Send</button>
     </div>
     <div id="messages">
@@ -37,26 +39,39 @@
   
     $(() => {
         $("#send").click(()=>{
-            sendMessage({name: $("#name").val(), message: $("#message").val(), email: $("#e-mail").val()});
+            sendMessage({name: $("#name").val(), message: $("#message").val(), email: $("#email").val(), celular: $("#telefone").val()});
         })
 
         getMessages()
+        /*getContact()*/
     })
     socket.on('message', addMessages)
-
+    /*socket.on('contact', addContact)*/
     function addMessages(message){
-        $("#messages").append(`<h4> ${message.name} </h4> <p> ${message.message} </p> <p> ${message.email}</p>`)
+        $("#messages").append(`<h4> nome: ${message.name} </h4> <p> mensagem: ${message.message}<p> <p> email: ${message.email}</p> <p> telefone: ${message.celular} </p>`)
     }
+   
 
     function getMessages(){
       $.get('http://localhost:3000/messages', (data) => {
         data.forEach(addMessages);
       })
     }
-
+    
     function sendMessage(message){
       $.post('http://localhost:3000/messages', message)
     }
+    /*function addContact(contact){
+        $("#messages").append(`<p> ${contact.email}</p> <p> ${contact.celular}</p>`)
+    }
+    function getContact(){
+      $.get('http://localhost:3000/contact', (data) =>{
+        data.forEach(addContact);
+      })
+    }
+    function sendContact(contact){
+      $.post('http://localhost:3000/contact', contact)
+    }*/
 </script>
 </body>
 </html>

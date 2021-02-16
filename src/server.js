@@ -26,10 +26,14 @@ app.use(express.static(__dirname))
 const Message = mongoose.model('Message', {
   name: String,
   message: String,
-  email
-  : String
+  email: String,
+  celular: String
 })
 
+const Contact = mongoose.model('Contact',{
+  email: String,
+  celular: String
+})
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true}, (err) =>{
     var connectionStatus = !err ? 'Success': 'Error Connecting to database';
 console.log(connectionStatus);
@@ -37,12 +41,17 @@ console.log(connectionStatus);
 
 
 app.get('/messages', async (req, res) => {
-  console.log("Get no banco")
+  console.log("Get nas mensagem")
   const result = await Message.find()
   Message.fi
   return res.send(result)
 })
-
+app.get('/contact', async (req, res) => {
+  console.log("Get no contato")
+  const result = await Contact.find()
+  Contact.fi
+  return res.send(result)
+})
 app.get('/messages/:user', (req, res) => {
   var user = req.params.user
   Message.find({name: user},(err, messages)=> {
@@ -50,8 +59,11 @@ app.get('/messages/:user', (req, res) => {
   })
 })
 
-app.ipaws;
-
+app.post('/contact', async (req, res) =>{
+  const result = await Contact.create(req.body)
+  console.log(result)
+  return res.json(result)
+})
 app.post('/messages', async (req, res) => {
   const result = await Message.create(req.body)
   console.log(result)
